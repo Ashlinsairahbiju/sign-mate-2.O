@@ -4,8 +4,8 @@ export default function Index({ navigateToPage }) {
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1>Welcome to My Extension</h1>
-      <p>This is the main page of your extension popup.</p>
-      <button
+      <p>This is the main page of your extension popup.jjjjjjj</p>
+      {/* <button
         onClick={() => navigateToPage('new')}
         style={{
           padding: '10px 15px',
@@ -17,7 +17,7 @@ export default function Index({ navigateToPage }) {
         }}
       >
         Go to New Page
-      </button>
+      </button> */}
     </div>
   );
 }
