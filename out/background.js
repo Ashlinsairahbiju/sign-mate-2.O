@@ -1,14 +1,20 @@
 chrome.runtime.onInstalled.addListener(() => {
-    console.log("Extension installed!");
+    chrome.storage.local.set({ extensionEnabled: false });
   });
   
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "saveData") {
-      chrome.storage.sync.set({ key: message.data }, () => {
-        console.log("Data saved:", message.data);
-        sendResponse({ status: "success" });
+    if (message.action === "enableExtension") {
+      chrome.storage.local.set({ extensionEnabled: true }, () => {
+        sendResponse({ success: true });
       });
-      return true; // Keep the message channel open for async response.
     }
+  
+    if (message.action === "disableExtension") {
+      chrome.storage.local.set({ extensionEnabled: false }, () => {
+        sendResponse({ success: true });
+      });
+    }
+  
+    return true; // to indicate the response is asynchronous
   });
   
